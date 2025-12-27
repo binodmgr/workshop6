@@ -1,0 +1,170 @@
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f8;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background-color: #007BFF;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+    color: #fff;
+    margin: 0;
+    font-size: 35px;
+}
+
+header nav a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 20px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header nav a:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 20px;
+    color: #007BFF;
+}
+
+/* Table styles for index.php */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table th {
+    background-color: #007BFF;
+    color: #fff;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Buttons inside table and forms */
+button.btn {
+    padding: 6px 12px;
+    margin: 2px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+button.btn.edit {
+    background-color: #28a745;
+}
+
+button.btn.edit:hover {
+    background-color: #218838;
+}
+
+button.btn.delete {
+    background-color: #dc3545;
+}
+
+button.btn.delete:hover {
+    background-color: #c82333;
+}
+
+button.btn.add-new {
+    background-color: #007BFF;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+button.btn.add-new:hover {
+    background-color: #0056b3;
+}
+
+/*styling for add.php */
+.student-form {
+    width: 400px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.student-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #007BFF;
+}
+
+.student-form label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.student-form input {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.student-form button {
+    width: 100%;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.student-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Error message */
+.message.error {
+    color: #dc3545;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #f1f1f1;
+    margin-top: 30px;
+}
