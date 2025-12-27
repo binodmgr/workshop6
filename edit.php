@@ -4,38 +4,51 @@ include "db.php";
 
 $id = $_GET['id'];
 
+// Fetch student
 $sql = "SELECT * FROM students WHERE id = :id";
 $stmt = $conn->prepare($sql);
 $stmt->execute([':id' => $id]);
 $student = $stmt->fetch(PDO::FETCH_ASSOC);
 
+
+// Handle update
 if (isset($_POST['update'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $course = $_POST['course'];
+    $name = trim($_POST['name']);
+    $email = filter_var($_POST['email'], FILTER_VALIDATE_EMAIL);
+    $course = trim($_POST['course']);
 
-    $sql = "UPDATE students
-            SET name = :name, email = :email, course = :course
-            WHERE id = :id";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        ':name' => $name,
-        ':email' => $email,
-        ':course' => $course,
-        ':id' => $id
-    ]);
+    if (!$email) {
+        echo "<p class='message error'>Invalid email address.</p>";
+    } else {
+        $sql = "UPDATE students
+                SET name = :name, email = :email, course = :course
+                WHERE id = :id";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([
+            ':name' => $name,
+            ':email' => $email,
+            ':course' => $course,
+            ':id' => $id
+        ]);
 
-    header("Location: index.php");
-    exit;
+        header("Location: index.php");
+        exit;
+    }
 }
 ?>
 
-<h2>Edit Student</h2>
+<form method="POST" class="student-form">
+    <h2>Edit Student</h2>
 
-<form method="POST">
-    Name: <input type="text" name="name" value="<?= $student['name']; ?>" required><br><br>
-    Email: <input type="email" name="email" value="<?= $student['email']; ?>" required><br><br>
-    Course: <input type="text" name="course" value="<?= $student['course']; ?>" required><br><br>
+    <label for="name">Name: </label>
+    <input type="text" name="name" id="name" value="<?= htmlspecialchars($student['name']); ?>" required>
+
+    <label for="email">Email: </label>
+    <input type="email" name="email" id="email" value="<?= htmlspecialchars($student['email']); ?>" required>
+
+    <label for="course">Course: </label>
+    <input type="text" name="course" id="course" value="<?= htmlspecialchars($student['course']); ?>" required>
+
     <button type="submit" name="update">Update Student</button>
 </form>
 
